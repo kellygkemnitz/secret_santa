@@ -27,7 +27,7 @@ def index():
             pairs = secret_santa(participants)
             return render_template('result.html', pairs=pairs)
         except ValueError as e:
-            return str(e)
+            return render_template('error.html', error_message=str(e))
     return render_template('form.html')
 
 if __name__ == "__main__":

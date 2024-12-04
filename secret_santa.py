@@ -12,7 +12,7 @@ def secret_santa(participants):
     return secret_santa_pairs
 
 if __name__ == "__main__":
-    participants = {
+    participants = [
         'Garry',
         'Denise',
         'Kelly',
@@ -20,7 +20,7 @@ if __name__ == "__main__":
         'Kameron',
         'Christy',
         'Cambri'
-    }
+    ]
 
     pairs = secret_santa(participants)
 

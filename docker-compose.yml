@@ -1,0 +1,7 @@
+services:
+  secret_santa:
+    image: secret_santa:latest
+    container_name: secret_santa
+    ports:
+      - '8002:8002/tcp'
+    restart: unless-stopped

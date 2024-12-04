@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template
 import random
+import re
 
 app = Flask(__name__)
 
@@ -8,6 +9,9 @@ def secret_santa(participants):
         raise ValueError(f'At least two participants are required, and list only has {len(participants)} participant(s).')
     if len(participants) != len(set(participants)):
         raise ValueError('Duplicate names found in the list of participants.')
+    for participant in participants:
+        if not re.match("^[a-zA-Z\\s]+$", participant):
+            raise ValueError(f'Invalid participant name: {participant}. Only letters and spaces are allowed.')
     
     shuffled_names = sorted(participants, key=lambda x: random.random())
     

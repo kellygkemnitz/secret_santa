@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Secret Santa Generator</title>
+  </head>
+  <body>
+    <h1>Secret Santa Generator</h1>
+    <form method="post">
+      <div id="participants">
+        <label for="participant1">Participant 1:</label><br>
+        <input type="text" id="participant1" name="participants"><br>
+        <label for="participant2">Participant 2:</label><br>
+        <input type="text" id="participant2" name="participants"><br>
+      </div>
+      <br>
+      <button type="button" onclick="addParticipant()">Add another participant</button><br><br>
+      <input type="submit" value="Generate Pairs">
+    </form>
+    <script>
+      let participantCount = 2;
+      function addParticipant() {
+        participantCount++;
+        const div = document.createElement('div');
+        div.innerHTML = `<label for="participant${participantCount}">Participant ${participantCount}:</label><br>
+                         <input type="text" id="participant${participantCount}" name="participants"><br>`;
+        document.getElementById('participants').appendChild(div);
+      }
+    </script>
+  </body>
+</html>

@@ -1,4 +1,7 @@
+from flask import Flask, request, render_template
 import random
+
+app = Flask(__name__)
 
 def secret_santa(participants):
     if len(participants) < 2:
@@ -13,18 +16,17 @@ def secret_santa(participants):
 
     return secret_santa_pairs
 
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        participants = request.form.getlist('participants')
+        participants = [p.strip() for p in participants if p.strip()]
+        try:
+            pairs = secret_santa(participants)
+            return render_template('result.html', pairs=pairs)
+        except ValueError as e:
+            return str(e)
+    return render_template('form.html')
+
 if __name__ == "__main__":
-    participants = [
-        'Garry',
-        'Denise',
-        'Kelly',
-        'Korey',
-        'Kameron',
-        'Christy',
-        'Cambri'
-    ]
-
-    pairs = secret_santa(participants)
-
-    for giver, receiver in pairs.items():
-        print(f'{giver} --> {receiver}')
+    app.run(debug=True)

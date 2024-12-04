@@ -7,10 +7,10 @@ RUN python -m venv /opt/venv
 SHELL ["/bin/bash", "-c"]
 ENV PATH="/opt/venv/bin:$PATH"
 
-COPY . /app
+COPY requirements.txt .
+COPY templates templates/
+COPY secret_santa.py app.py 
 
 RUN pip install --no-cache-dir -Ur requirements.txt
 
-EXPOSE 8002
-
-CMD ["python3", "-m", "flask", "run"]
+CMD ["gunicorn", "-b", "0.0.0.0:8002", "-w", "1", "-k", "gevent", "--worker-connections", "500", "--timeout", "120", "--keep-alive", "5", "--log-level", "info", "--access-logfile", "-", "app:app"]

@@ -1,6 +1,9 @@
 import random
 
 def secret_santa(participants):
+    if len(participants) < 2:
+        raise ValueError(f'At least two participants are required, and list only has {len(participants)} participant(s).')
+    
     shuffled_names = sorted(participants, key=lambda x: random.random())
     
     secret_santa_pairs = {}

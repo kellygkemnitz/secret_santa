@@ -1,8 +1,7 @@
 import random
 
 def secret_santa(participants):
-    names = list(participants)
-    shuffled_names = sorted(names, key=lambda x: random.random())
+    shuffled_names = sorted(participants, key=lambda x: random.random())
     
     secret_santa_pairs = {}
     

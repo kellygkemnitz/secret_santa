@@ -3,14 +3,17 @@
   <head>
     <meta charset="utf-8">
     <title>Secret Santa Pairs</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   </head>
   <body>
-    <h1>Secret Santa Pairs</h1>
-    <ul>
-      {% for giver, receiver in pairs.items() %}
-        <li>{{ giver }} -> {{ receiver }}</li>
-      {% endfor %}
-    </ul>
-    <a href="/">Go back</a>
+    <div class="container">
+      <h1 class="mt-5">Secret Santa Pairs</h1>
+      <ul class="list-group">
+        {% for giver, receiver in pairs.items() %}
+          <li class="list-group-item">{{ giver }} -> {{ receiver }}</li>
+        {% endfor %}
+      </ul>
+      <a href="/" class="btn btn-primary mt-3">Go back</a>
+    </div>
   </body>
 </html>

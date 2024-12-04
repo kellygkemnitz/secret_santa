@@ -6,6 +6,8 @@ app = Flask(__name__)
 def secret_santa(participants):
     if len(participants) < 2:
         raise ValueError(f'At least two participants are required, and list only has {len(participants)} participant(s).')
+    if len(participants) != len(set(participants)):
+        raise ValueError('Duplicate names found in the list of participants.')
     
     shuffled_names = sorted(participants, key=lambda x: random.random())
     

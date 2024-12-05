@@ -16,4 +16,4 @@ RUN pip install --no-cache-dir -Ur requirements.txt
 
 EXPOSE 8082
 
-CMD ["python", "app.py"]
+CMD ["python3", "app.py"]

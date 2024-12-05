@@ -14,6 +14,4 @@ COPY secret_santa.py app.py
 #RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -Ur requirements.txt
 
-EXPOSE 8082
-
 CMD ["python3", "app.py"]

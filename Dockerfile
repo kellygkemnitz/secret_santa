@@ -1,4 +1,4 @@
-FROM python:3.13-slim
+FROM python:3.9.21-slim-bookworm
 
 WORKDIR /app
 
@@ -11,7 +11,7 @@ COPY requirements.txt .
 COPY templates templates/
 COPY secret_santa.py app.py 
 
-RUN pip install --upgrade pip
+#RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -Ur requirements.txt
 
 EXPOSE 8082

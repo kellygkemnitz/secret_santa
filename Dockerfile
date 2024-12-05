@@ -2,7 +2,7 @@ FROM python:3.9.21-slim-bookworm
 
 WORKDIR /app
 
-RUN python -m venv /opt/venv
+RUN python3 -m venv /opt/venv
 
 SHELL ["/bin/bash", "-c"]
 ENV PATH="/opt/venv/bin:$PATH"
